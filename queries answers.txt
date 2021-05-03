@@ -1,0 +1,110 @@
+﻿1Q. 
+SELECT Account_Name,last_name,Industry,Business_Type 
+from accounts,cases,contacts
+where origin IN (select Origin from cases 
+                 where origin = "Email" and Owning_user IN 
+                 (Select Owning_user from contacts 
+                  where Owning_user = 1009));
+
+2Q. 
+SELECT Created_On,Days_to_Closed FROM cases 
+
+3Q.
+ SELECT Total_Amount_Base FROM orders
+WHERE Created_On IN(SELECT Created_On FROM orders
+                    WHERE Created_On BETWEEN "2019-04-01" and "2019-05-01");
+
+4Q.
+ select a.order_id
+from orders a join order_products b 
+on a.order_id=b.order OR Quantity > 5;
+5Q.
+select count(DISTINCT status_reason) as Status_Reason_Distinct_Count
+from products_1;
+
+6Q.
+select o.Created_By,l.Lead_Source,o.Status_Reason
+from opportunities o,leads l
+where Est_Close_Date=2021
+group by o.Created_By,l.Lead_Source,o.Status_Reason;
+
+7Q. 
+select quote_product
+from quote_products
+where Quantity=(select MAX(Quantity)
+                from quote_Products);
+
+8Q. 
+select u.User,s.full_name,Monthly_target
+from users u join sales_person_target s
+on s.full_name=u.full_name
+group by u.User,s.Full_Name
+HAVING monthly_target > "$0125.00K";
+
+9Q. 
+SELECT Product,Name,Created_On,Product_Type,Amount_Base FROM products_1
+INNER JOIN price_list_items USING (Product)
+WHERE Product_Type = "Inside the Home";
+
+10Q. 
+SELECT Product,quote_product,Name,Total_Amount_Base,Status_Reason 
+FROM quotes
+INNER JOIN quote_products USING (Quote)
+WHERE Quantity BETWEEN (7 and 10) AND Month(Created_On) = 1;
+
+11Q. 
+select u.User,s.full_name,Monthly_target
+from users u join sales_person_target s
+on s.full_name=u.full_name
+group by u.User,s.Full_Name
+HAVING monthly_target > "$0125.00K";
+
+12Q. 
+select * from accounts
+where account_name like '%a';
+
+13Q. 
+select o.opportunity,year(o.Est_close_date) as year
+from opportunities o
+where o.Status_Reason ="open"
+ORDER BY Est_Close_Date;
+
+14Q. 
+select * from quotes
+where NOT status_reason="Negotiation" AND NOT status_reason="confirmed";
+
+15Q. 
+select monthname(created_on) as month,total_amount_base,status_reason
+from quotes
+group by month,total_amount_base,status_reason;
+
+16Q. 
+select MAX(age_in_days),sales_stage
+from opportunities
+where status_reason="open"
+group by sales_stage;
+
+17Q. 
+Select product, product_id, name, created_on, modified_on, product_type
+from products_1
+where product_id=(select product_id
+                  from products_1
+                  where name="radiator");
+
+18Q. 
+select * from accounts a
+where a.business_type =(selct a.business_type
+                 from accounts a
+                 where a.Account=28);
+
+19Q. 
+select * from sales_person_target
+where full_name like 'r__%';
+
+20Q. 
+SELECT a.Product AS Product,a.Name AS Name,a.created_On AS Creaed_On,b.Amount_Base As Amount
+FROM products_1 a 
+INNER JOIN price_list_items b ON a.Product = b.Product
+INNER JOIN price_lists c ON b.Price_List = c.Price_List
+WHERE c.Status_Reason = "Active";
+
