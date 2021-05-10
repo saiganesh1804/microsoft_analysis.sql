@@ -9,7 +9,7 @@ Specs
 
 2. File named queries_answers.txt should contain the SQL statements for each of the below problems.
 
-3. File named output.txt should contain the output of the execution of the script
+3. File named output.txt should contain the output screenshots of the execution of the script
 queries_answers.txt.
 
 
@@ -54,3 +54,5 @@ queries_answers.txt.
 19Q.  select all sales person target whose name is starting with "r" and are atleast 3 characters in length.
 
 20Q.  Give the Product,name,created_on,amount when status_reason is active.
+
+21Q. Retrive the monthly target and yearly target from sales person target where full name is "David love". (PL sql).
