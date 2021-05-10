@@ -3,9 +3,9 @@ Create SQL Database and run queries.
 
 Specs
 --------
+In the database that you created ,formulate and execute the following queries in SQL.
 
-
-1. File named microsft_analysis.sql should contain the complete script with which you constructed your database (i.e., all CREATE and all INSERT statements).
+1. File named microsft_analysis.sql should contain the complete script with which you can construct your database (i.e., all CREATE and all INSERT statements).
 
 2. File named queries_answers.txt should contain the SQL statements for each of the below problems.
 
