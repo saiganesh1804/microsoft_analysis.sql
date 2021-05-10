@@ -108,3 +108,15 @@ INNER JOIN price_list_items b ON a.Product = b.Product
 INNER JOIN price_lists c ON b.Price_List = c.Price_List
 WHERE c.Status_Reason = "Active";
 
+21Q.
+DECLARE
+Monthly_Target1 varchar(16);
+Yearly_Target1 varchar(8);
+BEGIN
+SELECT Monthly_Target into Monthly_Target1 from sales_person_target where Full_name='David Love';
+DBMS_OUTPUT.PUT_LINE('Monthly_Target '|| Monthly_Target1);
+SELECT Yearly_Target into Yearly_Target1 from sales_person_target where Full_name='David Love';
+DBMS_OUTPUT.PUT_LINE('Yearly_Target '|| Yearly_Target1);
+END;
+/
+
